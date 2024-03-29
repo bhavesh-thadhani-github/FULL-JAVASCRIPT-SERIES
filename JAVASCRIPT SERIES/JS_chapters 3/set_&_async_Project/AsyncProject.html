@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #212121;
+            color: white;
+        }
+        #start, #stop{
+            padding: 15px 25px;
+            font-size: 25px;
+            border: none;
+            border-radius: 10px;
+            margin-right: 10px
+        };
+    </style>
+</head>
+<body>
+
+    <h1>Click the Start Button to change the Background Color Every Second</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+
+const randomColor = function(){
+    const hex = `0123456789ABCDEF`
+    let color = `#`
+    for(let i=0; i<6; i++){
+        color += hex[Math.floor(Math.random()*16)]
+    }
+    console.log(color);
+    return color
+}
+
+let intervalId
+
+function startChangingColor(){
+    intervalId = setInterval(function(){
+        document.body.style.backgroundColor = randomColor()
+        heading.style.color = randomColor()
+    },1000)
+}
+function stopChangingColor(){
+    clearInterval(intervalId)
+}
+
+document.getElementById('start').addEventListener('click', startChangingColor)
+document.getElementById('stop').addEventListener('click', stopChangingColor)
+const heading = document.querySelector('h1')
+
+/*const randomColor = function(){
+        const hex = `0123456789ABCDEF`
+        let color = `#`
+    for(let i = 0; i < 6; i++){
+        color += hex[Math.floor(Math.random()*16)]
+    }
+    console.log(color)
+    return color    //we have to always write return statement at the end of the function, bcoz the function gets over after the return statement
+}
+
+// console.log(randomColor())
+let intervalId
+const startChangingColor = function(){
+    if(!intervalId){    
+        intervalId = setInterval(function(){
+            document.body.style.backgroundColor = randomColor()
+            // console.log(`${color}, `)
+        }, 1000)
+    }
+}
+
+const stopChangingColor = function(){
+    clearInterval(intervalId)
+    intervalId = null;  //to null the intervalId, make you advanced coder
+}
+
+document.querySelector('#start').addEventListener('click', startChangingColor)
+document.querySelector('#stop').addEventListener('click', stopChangingColor)*/
+</script>
+</html>

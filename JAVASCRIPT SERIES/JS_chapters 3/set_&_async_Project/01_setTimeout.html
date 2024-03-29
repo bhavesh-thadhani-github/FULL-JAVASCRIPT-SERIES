@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chai aur Code</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+
+    //setTimeout is an method but also calls an API
+    //They are not the part of core JS, you get these through browser APIs, you can also get these thorugh another runtimes and browsers
+    //clearInterval & clearTimeout are parts of setInterval & setTimeout
+    //setTimeout :-
+    /*setTimeout(function(){
+        console.log('setTimeout executed!');
+    },2000)*/
+
+    //handler is just a callback function without name
+    /*const sayBhavesh = function(){
+        console.log('Bhavesh');
+    }*/
+
+    const changeText = function(){
+        document.querySelector('h1').innerHTML = 'best JS series'
+    }
+    
+    const changeMe = setTimeout(changeText, 2000)    //when defining a function with name, we just have to give its reference bcoz it asks for an handler
+
+    document.querySelector('#stop').addEventListener('click',function(){
+        clearTimeout(changeMe)
+        console.log('STOPPED!');
+    })
+
+    // clearTimeout()
+</script>
+</html>

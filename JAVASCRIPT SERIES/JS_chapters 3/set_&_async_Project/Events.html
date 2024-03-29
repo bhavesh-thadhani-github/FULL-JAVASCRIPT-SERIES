@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events</title>
+</head>
+<style>
+    body{
+        color: white;
+    }
+</style>
+<body style="background-color: #414141;">
+    <h2>Amazing image</h2>
+    <div>
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+
+<script>
+    //EVENTS 1:
+    
+    // 1)In JS, code runs sequentially
+    // 2)But events run when user perform any action
+    // 3)In asycnchronous programming code not runs sequentially
+    // 4)In JS don't write events in inline css of html tags bcoz it creates problems in the bigger projects
+    //     but can write in React
+    //  5)This below approach is also not good bcoz it does not provide features
+    // ***CODE -:
+    /*const owl = document.getElementById('owl').onclick = function(){
+        alert('owl clicked')
+    }*/
+    // More different approaches(used in early days instead of addEventListener)
+    // It's used in early days for Internet Explorer - attachEvent()
+    // jQuery - on
+
+    
+    // DIFFERENT TYPES OF POINTEREVENTS
+    // $ type, timestamp, defaultPrevented(to change/stop the default behaviour of any tag)
+    //  [used in FORM- like to prevent the submit button from submitting the form]
+    // $ target, toElement, srcElement, currentTarget(imp)
+    // $ clientX, clientY, screenX, screenY, tiltX, tiltY (all these are helpful in interviews)
+    // $ altKey, ctrlKey, shiftKey, keyCode(Research about what's the key code of A, B, etc. can make projects)
+    
+    
+    // BEST APPROACH (addEventListener):-
+    // In this READ about POINTEREVENTS(here (e))
+    // ***CODE :-
+    /*document.getElementById('owl').addEventListener('click', function(e){
+        console.log(e);
+    }, false)*/   //This false is default
+
+    //  NOTES:
+    /*Event propogation has 2 contexts:
+    EventBubbling, EventCapturing
+    false is default & EventBubbling
+    In some scenarios we also use EventCapturing*/
+
+    // ***CODE :-
+    /*document.getElementById('images').addEventListener('click', function(){
+        console.log('Click inside the ul');
+    }, false)
+    document.getElementById('owl').addEventListener('click', function(e){
+        console.log('Owl Clicked');
+        e.stopPropagation() //(INTERESTING)Just like preventDefault
+        //Because of the above case, the outer event 'll not execute 
+    }, false)*/
+    // In the above case, when we click on image with owl id, then
+    // First:- 'Owl Clicked' 'll be printed
+    // And then 'Click inside the ul' 'll be printed
+    // This concept is called EVENTPROPOGATION & BUBBLING(False-default) (inside to outside)
+    // Opposite of Bubbling is CAPTURING(True)
+    // You have to choose the approach according to yourself
+
+    // NOW PREVENTDEFAULT
+    // CODE :-
+    /*document.getElementById('google').addEventListener('click', function(e){
+        e.preventDefault()  // Prevent the default action of the element
+        e.stopPropagation() //To stop bubbling
+        console.log('Goggle clicked');
+    }, false)*/
+
+
+
+    //REAL WORLD PROJECTS:
+    document.querySelector('#images').addEventListener('click', function(e){
+        console.log(e.target.parentNode);   //To select the parent of the target, bcoz we have to remove the parent element(li) not image
+        if(e.target.tagName === 'IMG'){
+            console.log(e.target.id);
+            let removeIt = e.target.parentNode
+            removeIt.remove()
+        }
+        /*let removeIt = e.target.parentNode
+        removeIt.remove() */  //1st approach
+        // By using the above method, when we click on Google which is the list element, all the li's 'll get removed bcoz the parent of li is ul(so full ul get removed)
+
+        // removeIt.parentNode.removeChild(removeIt)    //2nd approach
+    }, false)
+
+</script>
+</html>

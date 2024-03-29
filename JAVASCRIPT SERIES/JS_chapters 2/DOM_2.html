@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color:black; color: white;">
+
+</body>
+<script>
+    // 1] Creating a new element on document & giving it id,class,custom attributes
+    const div = document.createElement('div')
+    console.log(div);
+    //div.innerHTML = 'bhavesh'
+    div.className = 'main'
+    div.id = Math.round(Math.random() * 10 + 1)
+    div.setAttribute('fun','generatedTitle') //to create CUSTOM Attribute
+    
+    // 2] Adding styles to element(div)
+    div.style.backgroundColor = 'orange'
+    div.style.color = 'blue'
+    div.style.fontFamily = 'verdana'
+    div.style.padding = '12px'
+
+    // 3] Adding Text inside the element
+    // 1)
+    div.innerText = 'Chai aur Code'
+    // 2)
+    const addText = document.createTextNode('Bhavesh Thadhani') //to add text to an element
+    div.appendChild(addText) //adding that text to an element
+    document.body.appendChild(div) //to add/show the element on document(screen)
+    
+
+//EXERCISE
+// FUNCTION TO CREATE ELEMENTS WITH DIFFERENT BACKGROUND COLORS FROM ARRAY
+// 1) APPROACH 1 (Using cloneNode method) 
+const one = (elementName, myIdName, myClassName, textContent, passArray) => {
+    const createdElement = document.createElement(elementName);
+    createdElement.id = myIdName;
+    createdElement.className = myClassName;
+
+    const createdText = document.createTextNode(textContent);
+    createdElement.appendChild(createdText);
+    // document.body.appendChild(createdElement);
+
+    // Set background color with different colors from passArray
+    for (let i = 0; i < passArray.length; i++) {
+        createdElement.style.backgroundColor = passArray[i];
+        // To visually see the change, you might want to append new elements rather than modifying the same one
+        // This will create three elements each with a different background color
+        document.body.appendChild(createdElement.cloneNode(true));
+    }
+};
+const myArray = ['red', 'green', 'blue', 'violet'];
+one('h1', 'idyy', 'clasyy', 'Heyy Guysss!', myArray);
+
+
+// 2) APPROACH 2 (Using forEach method)
+/*const one = (elementName, myIdName, myClassName, textContent, passArray) => {
+    passArray.forEach(color => {
+        const createdElement = document.createElement(elementName);
+        createdElement.id = myIdName;
+        createdElement.className = myClassName;
+        createdElement.textContent = textContent;
+        createdElement.style.backgroundColor = color;
+        document.body.appendChild(createdElement);
+    });
+};
+
+const myArray = ['red', 'green', 'blue'];
+
+one('h1', 'idyy', 'clasyy', 'Heyy Guysss!', myArray);*/
+
+
+</script>
+</html>

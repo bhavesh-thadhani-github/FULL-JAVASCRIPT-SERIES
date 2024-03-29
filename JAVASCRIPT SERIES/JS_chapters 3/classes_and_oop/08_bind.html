@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+<body>
+    <button>Button Clicked</button>
+</body>
+<script>
+    class React{
+        constructor(){
+            this.library = 'React'      //these are variables
+            this.server = 'https://localhost:300'   //be default the server gets start when we give the value of "server" (variable)
+
+            //requirement
+            //1) to get reference of the button
+            //2) and an event takes place when we click on the button(like console.log or msg back to the server(like submitting form to the server))
+            document
+                .querySelector('button')
+                .addEventListener('click', this.handleClick.        //we 'll not get the reference of this.server without writing this line(so we use bind). The reference of this get lost
+                bind(this))     //here we bind 'this' so that it can take reference of all(like library, server)[all the variable get attach & reference also go attached without overwriting anything]
+        }
+        handleClick(){
+            console.log('button clicked');
+            console.log(this.server);
+            console.log(this);  //we have the reference of this of button (button)
+            //we get the reference of button bcoz document.querySelector('button') & then called this for button(html)
+        }
+    }
+
+    const app = new React()
+</script>
+</html>

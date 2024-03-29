@@ -1,0 +1,69 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.nav-bar{
+    height: 100px;
+    width: 100%;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-image: linear-gradient(to right bottom, rgb(255, 1, 234), blue);
+}
+.logo{
+    margin-right: 20px;
+}
+.nav-items{
+    display: flex;
+    align-items: center;
+    margin-left: 420px;
+    color: white;
+    font-weight: 500;
+    font-size: 17px;
+}
+.nav-items li{
+    list-style-type: none;
+    padding: 0 10px;
+}
+ul:hover li{
+    transform:scale(1);
+    opacity:0.2;
+    filter:blur(5px);
+}
+ul li:hover{
+    transform: scale(2);
+    opacity: 1;
+    filter: blur(0);
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.buttons button{
+    font-size: 16px;
+    border: none;
+    outline: none;
+    position: relative;
+    background-color: yellow;
+    border: 2px solid black;
+    font-weight: 500;
+    /* background-image: linear-gradient(blue,rgb(255, 0, 212)); */
+    /* background-image: linear-gradient(to right,violet,indigo,blue,green,yellow,orange,red); */
+    border-radius: 10px;
+    padding: 5px 10px;
+    z-index: 2;
+    cursor: pointer;
+}
+/* .buttons button::after{
+    content: "Hello";
+    color: white;
+    position: absolute;
+    top: 1px;
+    bottom: 1px;
+    left: 1px;
+    right:1px;
+    padding-top: 2px;
+    background-color: black;
+    border-radius: 10px;
+} */

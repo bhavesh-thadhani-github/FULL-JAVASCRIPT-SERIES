@@ -1,0 +1,25 @@
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.button{
+    height: 150px;
+    width: 150px;
+    border: 2px solid black;
+    display: inline-block;
+    margin: 0 10px;
+    cursor: pointer;
+}
+#grey{
+    background-color: grey;
+}
+#white{
+    background-color: white;
+}
+#blue{
+    background-color: blue;
+}
+#yellow{
+    background-color: yellow;
+}
+   

@@ -1,0 +1,26 @@
+*{
+    font-family: cursive;
+}
+.button{
+    height: 100px;
+    width: 100px;
+    background-color: red;
+    border: 2px solid black;
+    margin-left: 20px;
+    display: inline-block;
+}
+#grey{
+    background-color: grey;
+}
+#white{
+    background-color: white;
+}
+#blue{
+    background-color: blue;
+}
+#yellow{
+    background-color: yellow;
+}
+#purple{
+    background-color: purple;
+}

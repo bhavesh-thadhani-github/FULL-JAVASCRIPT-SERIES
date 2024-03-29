@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Exercises</title>
+    <link rel="stylesheet" href="01_exercise_style.css">
+</head>
+<body>
+    <h1>Choose Your Exercise</h1>
+    <select id="yourExercise">
+        <option value="sumArray">Exercise 1: Array Sum</option>
+        <option value="reverseString">Exercise 2: Reverse your Word</option>
+        <option value="findMax">Exercise 3: Find Maximum Number</option>
+        <option value="capitalizeWords">Exercise 4: Capitalize your Words</option>
+        <option value="isPalindrome">Exercise 5: Palindrome Check</option>
+    </select>
+
+    <!-- EXERCISE 1: sumArray -->
+    <div id="sumArrayEx1" style="display: block;">
+        <h2>Sum of your Numbers</h2>
+        <p><b>Instructions: </b><br>Enter a list of numbers separated by commas into the input field below. <br> Click the "Submit" button to calculate the sum of the numbers.</p>
+        <label for="numbersInput">Enter numbers (comma-separated):</label>
+        <input type="text" id="numbersInput">
+        <button id="sumArraySubmit">Submit</button>
+        <p id="finalresult_1" style="display: none;">Your Result is: <span id="resultspan_1"></span></p>
+    </div>
+
+    <!-- EXERCISE 2: reverseString -->
+    <div id="reverseStringEx2" style="display: none;">
+        <h2>Reverse your Word</h2>
+        <p><b>Instructions: </b><br>Enter a string into the input field below. <br>Click the "Submit" button to reverse the string.</p>
+        <label for="stringInput">Enter a string:</label>
+        <input type="text" id="stringInput">
+        <button id="reverseStringSubmit">Submit</button>
+        <p id="originalStringP" style="display: none;">Original String: <span id="resultspan_2.1"></span></p>
+        <p id="reverseStringP" style="display: none;">Reverse String: <span id="resultspan_2.2"></span></p>
+    </div>
+
+    <!-- EXERCISE 3: findMax -->
+    <div id="findMax3" style="display: none;">
+        <h2>Find the Maximum Number</h2>
+        <p><b>Instructions: </b><br>Enter a list of numbers separated by commas into the input field below. <br>Click the "Submit" button to find the maximum number.</p>
+        <label for="numbersInput2">Enter numbers (comma-separated):</label>
+        <input type="text" id="numbersInput2">
+        <button id="findMaxSubmit">Submit</button>
+        <p id="finalresult_3" style="display: none;">Maximum Number is: <span id="resultspan_3"></span></p>
+    </div>
+
+    <!-- EXERCISE 4: capitalizeWords -->
+    <div id="capitalizeWords4" style="display: none;">
+        <h2>Capitalize your First Word</h2>
+        <p><b>Instructions: </b><br>Enter a sentence or phrase into the input field below. <br> Click the "Submit" button to capitalize the first letter of each word.</p>
+        <label for="stringInput2">Enter numbers (comma-separated):</label>
+        <input type="text" id="stringInput2">
+        <button id="capitalizeWordsSubmit">Submit</button>
+        <p id="finalresult_4" style="display: none;">Capitalized first letter of Each Word: <br><b><span id="resultspan_4"></span></b></p>
+    </div>
+
+        <!-- EXERCISE 5: isPalindrome -->
+        <div id="isPalindrome5" style="display: none;">
+            <h2>Check for the Palindrome</h2>
+            <p><b>Instructions: </b><br>Enter a sentence or phrase into the input field below. <br>Click the "Submit" button to check if it is a palindrome (reads the same forwards and backwards).</p>
+            <label for="wordInput">Enter a Word: </label>
+            <input type="text" id="wordInput">
+            <button id="isPalindromeSubmit">Submit</button>
+            <p id="finalresult_5" style="display: none;">Result: <b><span id="resultspan_5"></span></b></p>
+        </div>
+
+
+</body>
+<script>
+// 5 Beginner Level Exercises
+//DOM
+document.addEventListener('DOMContentLoaded', function(){
+    //selecting different exercises
+    const sumArrayEx1 = document.getElementById('sumArrayEx1')
+    const reverseStringEx2 = document.getElementById('reverseStringEx2')
+    const findMax3 = document.getElementById('findMax3')
+    const capitalizeWords4 = document.getElementById('capitalizeWords4')
+    const isPalindrome5 = document.getElementById('isPalindrome5')
+
+    //selecting dropdown
+    const yourExercise = document.getElementById('yourExercise')    
+
+    //hide exercises
+    function hideExercise(){
+        sumArrayEx1.style.display = 'none'
+        reverseStringEx2.style.display = 'none'
+        findMax3.style.display = 'none'
+        capitalizeWords4.style.display = 'none'
+        isPalindrome5.style.display = 'none'
+    }
+
+    //show the user selected exercise(option)
+    yourExercise.addEventListener('change', function(){
+        if(yourExercise.value === 'sumArray'){
+            hideExercise()
+            console.log('Exercise 1');
+            sumArrayEx1.style.display = 'block'
+        }else if(yourExercise.value === 'reverseString'){
+            hideExercise()
+            console.log('Exercise 2');
+            reverseStringEx2.style.display = 'block'
+        }else if(yourExercise.value === 'findMax'){
+            hideExercise()
+            console.log('Exercise 3');
+            findMax3.style.display = 'block'
+        }else if(yourExercise.value === 'capitalizeWords'){
+            hideExercise()
+            console.log('Exercise 4');
+            capitalizeWords4.style.display = 'block'
+        }else if(yourExercise.value === 'isPalindrome'){
+            hideExercise()
+            console.log('Exercise 5');
+            isPalindrome5.style.display = 'block'
+        }
+    })
+})
+//EXERCISE LOGIC
+// 1]
+const exercise_1 = () => {
+    const userInput = document.getElementById('numbersInput').value; 
+    const inputArray = userInput.split(',')
+    const myArray = []
+    inputArray.forEach(element => {
+        const num = parseInt(element.trim())
+        if(!isNaN(element)){
+            myArray.push(num)
+        }
+    });
+    console.log(myArray);
+
+    let totalSum = 0
+    myArray.forEach(element => {
+        totalSum += element
+    })
+    console.log(totalSum);
+    document.getElementById('finalresult_1').style.display = 'block'
+    document.getElementById('resultspan_1').innerHTML = totalSum
+}
+document.getElementById('sumArraySubmit').addEventListener('click', exercise_1);
+
+// 2]
+const exercise_2 = () => {
+    const userInput = document.getElementById('stringInput').value
+    //console.log(userInput); //stringInput
+    const convertedToArray = userInput.split('')
+    //console.log(convertedToArray);
+    const reverseArray = []
+    for(let i=(convertedToArray.length - 1); i>=0;i--){
+        const reverseElement = convertedToArray[i]
+        //console.log(reverseElement);
+        reverseArray.push(reverseElement)
+    }
+    //console.log(reverseArray)
+    const arrayToString = reverseArray.join('')
+    //console.log(arrayToString)
+
+    document.getElementById('originalStringP').style.display = 'block'
+    document.getElementById('resultspan_2.1').innerHTML = userInput
+    document.getElementById('reverseStringP').style.display = 'block'
+    document.getElementById('resultspan_2.2').innerHTML = arrayToString
+}
+document.getElementById('reverseStringSubmit').addEventListener('click',exercise_2)
+
+// 3]
+const exercise_3 = () => {
+    const userInput = document.getElementById('numbersInput2').value
+    const inputArray = userInput.split(',')
+    const myArray = []
+    inputArray.forEach(element => {
+        const num = parseInt(element.trim())
+        if(!isNaN(element)){
+            myArray.push(num)
+        }
+    });
+    //console.log(myArray);
+    let maxNum = myArray[0]
+    //console.log(maxNum);
+    myArray.forEach(element => {
+        if(element > maxNum){
+            maxNum = element
+        }
+    })
+    //console.log(maxNum);
+
+    document.getElementById('finalresult_3').style.display = 'block'
+    document.getElementById('resultspan_3').innerHTML = maxNum
+}
+document.getElementById('findMaxSubmit').addEventListener('click',exercise_3)
+
+// 4]
+const exercise_4 = () => {
+    const userInput = document.getElementById('stringInput2').value
+    const convertedToArray = userInput.split(' ')
+    //console.log(convertedToArray);
+
+    let final;
+    let convertedToUpperCaseArr = []
+    convertedToArray.forEach(element => {
+        final = element.replace(element[0], element[0].toUpperCase())
+        convertedToUpperCaseArr.push(final)
+    })
+    //console.log(convertedToUpperCaseArr);
+    const backString = convertedToUpperCaseArr.join(' ')
+    //console.log(backString);
+    document.getElementById('finalresult_4').style.display = 'block'
+    document.getElementById('resultspan_4').innerHTML = backString
+}
+document.getElementById('capitalizeWordsSubmit').addEventListener('click',exercise_4)
+
+// 5]
+const exercise_5 = () => {
+    //accessing user input(value)
+    const userInput = document.getElementById('wordInput').value
+
+    //convert string to an array
+    const inputArray = userInput.split('')
+
+    //reversing the array values
+    const reverseArray = inputArray.reverse()
+
+    //convert array to string
+    const reverseString = reverseArray.join('')
+
+    //if-else condititons
+    let finalresult_5= document.getElementById('finalresult_5').style.display = 'block'
+    let resultspan_5 = document.getElementById('resultspan_5')
+
+    if(userInput === reverseString){
+        finalresult_5
+        const palindromeTrue = `It's a Palindrome`
+        resultspan_5.innerHTML = palindromeTrue
+    }else{
+        finalresult_5
+        const palindromeFalse = `It's NOT a Palindrome`
+        resultspan_5.innerHTML = palindromeFalse
+    }
+}
+document.getElementById('isPalindromeSubmit').addEventListener('click',exercise_5)
+
+</script>
+</html>

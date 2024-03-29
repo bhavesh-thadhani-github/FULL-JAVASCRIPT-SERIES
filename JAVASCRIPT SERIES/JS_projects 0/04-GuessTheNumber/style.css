@@ -1,0 +1,36 @@
+body{
+    background-color: #212121;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+#wrapper{
+    position: absolute;
+    top: 50px;
+    /* left: 50%; */
+}
+/* h4{
+    font-weight: normal;
+} */
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.form label{
+    font-size: 35px;
+    /* margin-bottom: 15px; */
+}
+#guessField{
+    margin: 15px 0;
+}
+.resultParas{
+    margin-top: 40px;
+}

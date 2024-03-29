@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure aur chai</title>
+    <style>
+        body{
+            background-color: #212121;
+        }
+
+    </style>
+</head>
+<body>
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+</body>
+<script>
+    //LEXICAL SCOPING & CLOSURE
+    /*function init(){
+        let name = 'Mozilla'
+        function displayName(){
+            console.log(name);
+        }
+        displayName()
+    }
+    init()*/
+
+    /*function outer(){
+        let username = 'hitesh'
+        // console.log('OUTER', secret);    //parents cannot access resources from child
+        function inner(){
+            let secret = 'my123'
+            console.log('inner', username);     //These 2 functions share resources with each other
+        }
+        function innerTwo(){
+            console.log('inner2', username);
+            console.log(secret);    //siblings cannot share resources with each other but that children can access resources from parents & grandparents
+        }
+        inner()
+        innerTwo()
+    }
+    outer()
+    console.log(`TOO OUTER ${username}`);*/
+
+// -----------------------------------------------
+// CLOSURE means when we return the whole(full including outer & inner) LEXICAL SCOPE(function)
+    function makeFunc(){
+        const name = 'Mozilla'
+        function displayName(){
+            console.log(name);
+        }
+        return displayName  //here although we are passing innerFunction reference but the full function(including the outer function & its variables) 'll also get returned(or pass). THE FULL LEXICAL SCOPING GO(full memory gets shared)
+    }
+    const myFunc = makeFunc()
+    myFunc()
+</script>
+    
+<script>
+    /*document.getElementById('orange').addEventListener('click', function(){
+        document.body.style.backgroundColor = 'orange'
+    })
+    document.getElementById('green').addEventListener('click', function(){
+        document.body.style.backgroundColor = 'green'
+    })*/
+
+    function clickHandler(color){
+        return function(){
+            document.body.style.backgroundColor = `${color}`
+        }
+    }
+    document.getElementById('orange').addEventListener('click', clickHandler('orange'))
+    document.getElementById('green').addEventListener('click', clickHandler('green'))
+
+</script>
+</html>
