@@ -1,6 +1,6 @@
 //array
 
- 
+ //This file has been edited through another device of same github account
 const myArr = [0, 1, 2, 3, 4, 5]
 // console.log(myArr);
 const myHeros = ["ironman", "thor", "vision"]
